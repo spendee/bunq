@@ -48,7 +48,7 @@ final class DraftShareInviteBank
         $this->userAliasCreated = $draftShareInviteBank['user_alias_created'];
         $this->status = $draftShareInviteBank['status'];
         $this->expiration = new \DateTimeImmutable($draftShareInviteBank['expiration'], $timezone);
-        $this->shareInviteBankResponseId = Id::fromInteger($draftShareInviteBank['"share_invite_bank_response_id"']);
+        $this->shareInviteBankResponseId = $draftShareInviteBank['share_invite_bank_response_id'];
         $this->draftShareUrl = $draftShareInviteBank['draft_share_url'];
         $this->draftShareSettings = $draftShareInviteBank['draft_share_settings'];
     }
@@ -63,4 +63,51 @@ final class DraftShareInviteBank
         return new self($draftShareInviteBank);
     }
 
+    /**
+     * @return array
+     */
+    public function getUserAliasCreated(): array
+    {
+        return $this->userAliasCreated;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getExpiration(): \DateTimeImmutable
+    {
+        return $this->expiration;
+    }
+
+    /**
+     * @return Id
+     */
+    public function getShareInviteBankResponseId(): Id
+    {
+        return $this->shareInviteBankResponseId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDraftShareUrl(): string
+    {
+        return $this->draftShareUrl;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDraftShareSettings(): array
+    {
+        return $this->draftShareSettings;
+    }
 }
