@@ -7,6 +7,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use Link0\Bunq\Domain\Certificate;
 use Link0\Bunq\Domain\DeviceServer;
+use Link0\Bunq\Domain\DraftShareInviteBank;
 use Link0\Bunq\Domain\Id;
 use Link0\Bunq\Domain\Keypair;
 use Link0\Bunq\Domain\Keypair\PublicKey;
@@ -157,6 +158,8 @@ final class Client
                 return PublicKey::fromServerPublicKey($value);
             case 'Token':
                 return Token::fromArray($value);
+            case 'DraftShareInviteBank':
+                return DraftShareInviteBank::fromArray($value);
             default:
                 throw new \Exception("Unknown struct type: " . $key);
         }
