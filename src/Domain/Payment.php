@@ -62,7 +62,7 @@ final class Payment
         $payment->created = new \DateTimeImmutable($value['created'], $timezone);
         $payment->updated = new \DateTimeImmutable($value['updated'], $timezone);
         $payment->amount = new Money(
-            $value['amount']['value'] * 100, // cents
+            $value['amount']['value'], // use it just as DTO
             new Currency($value['amount']['currency'])
         );
         $payment->description = $value['description'];
