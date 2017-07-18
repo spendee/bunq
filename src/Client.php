@@ -134,7 +134,7 @@ final class Client
                 }
             }
         }
-        $json['Pagination'] = json_decode($contents, true)['Pagination']; //todo change this because it does not make sense to have array of objects and then pagination
+        $json['Pagination'] = json_decode($contents, true)['Pagination'] ?? null; //todo change this because it does not make sense to have array of objects and then pagination
         return $json;
     }
 
