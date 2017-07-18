@@ -119,7 +119,8 @@ final class Client
     private function processResponse(ResponseInterface $response): array
     {
         $contents = (string) $response->getBody();
-        $json = json_decode($contents, true)['Response'];
+        $decoded = json_decode($contents, true);
+        $json = $decoded['Response'];
 
         // Return empty responses
         if (count($json) === 0) {
@@ -134,7 +135,7 @@ final class Client
                 }
             }
         }
-        $json['Pagination'] = json_decode($contents, true)['Pagination'] ?? null; //todo change this because it does not make sense to have array of objects and then pagination
+        $json['Pagination'] = $decoded['Pagination'] ?? null; //todo change this because it does not make sense to have array of objects and then pagination
         return $json;
     }
 
