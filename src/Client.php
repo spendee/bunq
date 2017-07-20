@@ -124,7 +124,8 @@ final class Client
 
         // Return empty responses
         if (count($json) === 0) {
-            return [];
+            $result['Pagination'] = $decoded['Pagination'] ?? null; //todo change this because it does not make sense to have array of objects and then pagination
+            return $result;
         }
 
         foreach ($json as $key => $value) {
