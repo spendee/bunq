@@ -95,7 +95,7 @@ final class MonetaryAccountBank
         }
 
         $this->currency = $monetaryBankAccount['balance']['currency'];
-        $this->balance = $monetaryBankAccount['balance']['value'];
+        $this->balance = (float) $monetaryBankAccount['balance']['value'];
         $this->dailyLimit = new Money($monetaryBankAccount['daily_limit']['value'], new Currency($this->currency));
         $this->dailySpent = new Money($monetaryBankAccount['daily_spent']['value'], new Currency($this->currency));
 

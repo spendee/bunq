@@ -66,7 +66,7 @@ final class Payment
         $payment->id = Id::fromInteger(intval($value['id']));
         $payment->created = new \DateTimeImmutable($value['created'], $timezone);
         $payment->updated = new \DateTimeImmutable($value['updated'], $timezone);
-        $payment->amount = $value['amount']['value'];
+        $payment->amount = (float) $value['amount']['value'];
         $payment->currency = $value['amount']['currency'];
         $payment->description = $value['description'];
         $payment->type = $value['type'];
