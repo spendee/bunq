@@ -49,12 +49,12 @@ final class MonetaryAccountBank
     private $alias;
 
     /**
-     * @var Currency
+     * @var string
      */
     private $currency;
 
     /**
-     * @var Money
+     * @var float
      */
     private $balance;
 
@@ -94,8 +94,8 @@ final class MonetaryAccountBank
             );
         }
 
-        $this->currency = new Currency($monetaryBankAccount['balance']['currency']);
-        $this->balance = new Money($monetaryBankAccount['balance']['value'], $this->currency);
+        $this->currency = $monetaryBankAccount['balance']['currency'];
+        $this->balance = $monetaryBankAccount['balance']['value'];
         $this->dailyLimit = new Money($monetaryBankAccount['daily_limit']['value'], $this->currency);
         $this->dailySpent = new Money($monetaryBankAccount['daily_spent']['value'], $this->currency);
 
@@ -154,12 +154,22 @@ final class MonetaryAccountBank
     }
 
     /**
-     * @return Money
+     * @return float
      */
-    public function balance(): Money
+    public function balance(): float
     {
         return $this->balance;
     }
+
+    /**
+     * @return string
+     */
+    public function getCurrency(): string
+    {
+        return $this->currency;
+    }
+
+
 
     /**
      * @return Id

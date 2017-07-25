@@ -29,9 +29,14 @@ final class Payment
     private $updated;
 
     /**
-     * @var Money
+     * @var float
      */
     private $amount;
+
+    /**
+     * @var string
+     */
+    private $currency;
 
     /**
      * @var string
@@ -61,10 +66,8 @@ final class Payment
         $payment->id = Id::fromInteger(intval($value['id']));
         $payment->created = new \DateTimeImmutable($value['created'], $timezone);
         $payment->updated = new \DateTimeImmutable($value['updated'], $timezone);
-        $payment->amount = new Money(
-            $value['amount']['value'], // use it just as DTO
-            new Currency($value['amount']['currency'])
-        );
+        $payment->amount = $value['amount']['value'];
+        $payment->currency = $value['amount']['currency'];
         $payment->description = $value['description'];
         $payment->type = $value['type'];
 
@@ -99,11 +102,19 @@ final class Payment
     }
 
     /**
-     * @return Money
+     * @return float
      */
-    public function amount(): Money
+    public function amount(): float
     {
         return $this->amount;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency(): string
+    {
+        return $this->currency;
     }
 
     /**
