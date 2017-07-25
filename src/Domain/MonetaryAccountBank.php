@@ -96,8 +96,8 @@ final class MonetaryAccountBank
 
         $this->currency = $monetaryBankAccount['balance']['currency'];
         $this->balance = $monetaryBankAccount['balance']['value'];
-        $this->dailyLimit = new Money($monetaryBankAccount['daily_limit']['value'], $this->currency);
-        $this->dailySpent = new Money($monetaryBankAccount['daily_spent']['value'], $this->currency);
+        $this->dailyLimit = new Money($monetaryBankAccount['daily_limit']['value'], new Currency($this->currency));
+        $this->dailySpent = new Money($monetaryBankAccount['daily_spent']['value'], new Currency($this->currency));
 
         foreach ($monetaryBankAccount['notification_filters'] as $notificationFilter) {
             $this->notificationFilters[] = NotificationFilter::fromArray($notificationFilter);
