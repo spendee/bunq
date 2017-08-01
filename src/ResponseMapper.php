@@ -48,7 +48,7 @@ final class ResponseMapper
             case 'UserCompany':
                 return Domain\UserCompany::fromArray($data);
             case 'Id':
-                return Domain\Id::fromInteger($data['id']);
+                return Domain\Id::fromInteger($data['Id'] ?? $data['id']);
             case 'CertificatePinned':
                 return Domain\Certificate::fromArray($data);
             case 'Payment':
